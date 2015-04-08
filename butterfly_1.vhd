@@ -71,14 +71,14 @@ signal w7Imag : std_logic_vector(7 downto 0) := X"01";
 
 begin
 
-u1: component butterfly port map(inputReal(0), inputReal(8),  w0Real, inputImag(0), inputImag(8),  w0Imag, outputReal(0),  outputReal(1),  outputImag(0),  outputImag(1));
-u2: component butterfly port map(inputReal(4), inputReal(12), w0Real, inputImag(4), inputImag(12), w0Imag, outputReal(2),  outputReal(3),  outputImag(2),  outputImag(3));
-u3: component butterfly port map(inputReal(2), inputReal(10), w0Real, inputImag(2), inputImag(10), w0Imag, outputReal(4),  outputReal(5),  outputImag(4),  outputImag(5));
-u4: component butterfly port map(inputReal(6), inputReal(14), w0Real, inputImag(6), inputImag(14), w0Imag, outputReal(6),  outputReal(7),  outputImag(6),  outputImag(7));
-u5: component butterfly port map(inputReal(1), inputReal(9),  w0Real, inputImag(1), inputImag(9),  w0Imag, outputReal(8),  outputReal(9),  outputImag(8),  outputImag(9));
-u6: component butterfly port map(inputReal(5), inputReal(13), w0Real, inputImag(5), inputImag(13), w0Imag, outputReal(10), outputReal(11), outputImag(10), outputImag(11));
-u7: component butterfly port map(inputReal(3), inputReal(11), w0Real, inputImag(3), inputImag(11), w0Imag, outputReal(12), outputReal(13), outputImag(12), outputImag(13));
-u8: component butterfly port map(inputReal(7), inputReal(15), w0Real, inputImag(7), inputImag(15), w0Imag, outputReal(14), outputReal(15), outputImag(14), outputImag(15));
+u1: component butterfly port map(inputReal(0), 	inputReal(1),  w0Real, inputImag(0), 	inputImag(1),  w0Imag, outputReal(0),  outputReal(1),  outputImag(0),  outputImag(1));
+u2: component butterfly port map(inputReal(2), 	inputReal(3), 	w0Real, inputImag(2), 	inputImag(3), 	w0Imag, outputReal(2),  outputReal(3),  outputImag(2),  outputImag(3));
+u3: component butterfly port map(inputReal(4), 	inputReal(5), 	w0Real, inputImag(4), 	inputImag(5), 	w0Imag, outputReal(4),  outputReal(5),  outputImag(4),  outputImag(5));
+u4: component butterfly port map(inputReal(6), 	inputReal(7), 	w0Real, inputImag(6), 	inputImag(7), 	w0Imag, outputReal(6),  outputReal(7),  outputImag(6),  outputImag(7));
+u5: component butterfly port map(inputReal(8), 	inputReal(9),  w0Real, inputImag(8), 	inputImag(9),  w0Imag, outputReal(8),  outputReal(9),  outputImag(8),  outputImag(9));
+u6: component butterfly port map(inputReal(10), inputReal(11), w0Real, inputImag(10), 	inputImag(11), w0Imag, outputReal(10), outputReal(11), outputImag(10), outputImag(11));
+u7: component butterfly port map(inputReal(12), inputReal(13), w0Real, inputImag(12), 	inputImag(13), w0Imag, outputReal(12), outputReal(13), outputImag(12), outputImag(13));
+u8: component butterfly port map(inputReal(14), inputReal(15), w0Real, inputImag(14), 	inputImag(15), w0Imag, outputReal(14), outputReal(15), outputImag(14), outputImag(15));
 
 end Behavioral;
 

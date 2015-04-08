@@ -55,13 +55,50 @@ signal tempReal, tempImag: array_16point;
 
 begin
 
---case sel is
+process(sel)
 
-	--when "00" =>
-	
-		tempReal <= inputReal;
-		tempImag <= inputImag;
-	
+begin
+
+tempReal <= inputReal;
+tempImag <= inputImag;
+
+case sel is
+
+	when "00" =>
+			
+		inputReal(0) 	<= 
+		inputReal(1)	<=
+		inputReal(2)	<=
+		inputReal(3)	<=
+		inputReal(4)	<=
+		inputReal(5)	<=
+		inputReal(6)	<=
+		inputReal(7)	<=
+		inputReal(8)	<=
+		inputReal(9)	<=
+		inputReal(10)	<=
+		inputReal(11)	<=
+		inputReal(12)	<=
+		inputReal(13)	<=
+		inputReal(14)	<=
+		inputReal(15)	<=
+		
+		inputImag(0) 	<=
+		inputImag(1)	<=
+		inputImag(2)	<=
+		inputImag(3)	<=
+		inputImag(4)	<=
+		inputImag(5)	<=
+		inputImag(6)	<=
+		inputImag(7)	<=
+		inputImag(8)	<=
+		inputImag(9)	<=
+		inputImag(10)	<=
+		inputImag(11)	<=
+		inputImag(12)	<=
+		inputImag(13)	<=
+		inputImag(14)	<=
+		inputImag(15)	<=
 		
 		
 	--when "01" =>
