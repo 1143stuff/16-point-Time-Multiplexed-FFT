@@ -31,16 +31,16 @@ use IEEE.STD_LOGIC_SIGNED.all;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity butterfly_1 is
+entity butterfly_block is
 
 port(	inputReal: in array_16point;
 		inputImag: in array_16point;
 		outputReal: out array_16point;
 		outputImag: out array_16point);
 
-end butterfly_1;
+end butterfly_block;
 
-architecture Behavioral of butterfly_1 is
+architecture Behavioral of butterfly_block is
 
 component butterfly is
 
@@ -81,4 +81,3 @@ u7: component butterfly port map(inputReal(12), inputReal(13), w0Real, inputImag
 u8: component butterfly port map(inputReal(14), inputReal(15), w0Real, inputImag(14), 	inputImag(15), w0Imag, outputReal(14), outputReal(15), outputImag(14), outputImag(15));
 
 end Behavioral;
-

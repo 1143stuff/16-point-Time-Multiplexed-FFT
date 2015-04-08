@@ -33,8 +33,8 @@ use work.array_16point.all;
 
 entity butterfly is
 
-port(	aReal, bReal, wReal : in std_logic_vector(7 downto 0);
-		aImag, bImag, wImag : in std_logic_vector(7 downto 0);
+port(	aReal, bReal, wReal : in std_logic_vector(15 downto 0);
+		aImag, bImag, wImag : in std_logic_vector(15 downto 0);
 		c1Real, c2Real: out std_logic_vector(15 downto 0);
 		c1Imag, c2Imag: out std_logic_vector(15 downto 0));
 
@@ -42,7 +42,7 @@ end butterfly;
 
 architecture Behavioral of butterfly is
 
-signal p1, p2, p3, p4, s1, s2 : std_logic_vector(15 downto 0);
+signal p1, p2, p3, p4, s1, s2 : std_logic_vector(31 downto 0);
 
 begin  
 
@@ -52,9 +52,9 @@ p3 <= bReal*wImag;
 p4 <= bImag*wReal; 
 s1 <= (p1-p2);
 s2 <= (p3+p4);
-c1Real <=  aReal +s1;    
-c1Imag <=  aImag +s2;
-c2Real <=  aReal -s1;   
-c2Imag <=  aImag -s2;
+c1Real <=  aReal + s1(15 downto 0);    
+c1Imag <=  aImag + s2(15 downto 0);
+c2Real <=  aReal - s1(15 downto 0);   
+c2Imag <=  aImag - s2(15 downto 0);
 
 end Behavioral;

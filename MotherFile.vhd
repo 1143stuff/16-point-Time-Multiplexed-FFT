@@ -60,7 +60,7 @@ signal sel: std_logic_vector(1 downto 0) := "00";
 
 begin
 
-Stage_1: component mux_4_1 port map(sel, s1Real, s1Imag, s2Real, s2Imag);
+mux_module: component mux_4_1 port map(sel, s1Real, s1Imag, s2Real, s2Imag);
 
 process(clk, sel)
 
