@@ -24,7 +24,7 @@ use IEEE.STD_LOGIC_SIGNED.all;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
+use IEEE.NUMERIC_STD.ALL;
 
 -- Uncomment the following library declaration if instantiating
 -- any Xilinx primitives in this code.
@@ -51,23 +51,42 @@ port(	aReal, bReal, wReal 	: in 	std_logic_vector(15 downto 0);
 
 end component;
 
-signal w0Real : std_logic_vector(15 downto 0) := X"0001";
-signal w1Real : std_logic_vector(15 downto 0) := X"0001";
-signal w2Real : std_logic_vector(15 downto 0) := X"0001";
-signal w3Real : std_logic_vector(15 downto 0) := X"0001";
-signal w4Real : std_logic_vector(15 downto 0) := X"0001";
-signal w5Real : std_logic_vector(15 downto 0) := X"0001";
-signal w6Real : std_logic_vector(15 downto 0) := X"0001";
-signal w7Real : std_logic_vector(15 downto 0) := X"0001";
+constant w0_real : integer := 0;
+constant w1_real : integer := 0;
+constant w2_real : integer := 0;
+constant w3_real : integer := 0;
+constant w4_real : integer := 0;
+constant w5_real : integer := 0;
+constant w6_real : integer := 0;
+constant w7_real : integer := 0;
  
-signal w0Imag : std_logic_vector(15 downto 0) := X"0001";
-signal w1Imag : std_logic_vector(15 downto 0) := X"0001";
-signal w2Imag : std_logic_vector(15 downto 0) := X"0001";
-signal w3Imag : std_logic_vector(15 downto 0) := X"0001";
-signal w4Imag : std_logic_vector(15 downto 0) := X"0001";
-signal w5Imag : std_logic_vector(15 downto 0) := X"0001";
-signal w6Imag : std_logic_vector(15 downto 0) := X"0001";
-signal w7Imag : std_logic_vector(15 downto 0) := X"0001";
+constant w0_imag : integer := 0;
+constant w1_imag : integer := 0;
+constant w2_imag : integer := 0;
+constant w3_imag : integer := 0;
+constant w4_imag : integer := 0;
+constant w5_imag : integer := 0;
+constant w6_imag : integer := 0;
+constant w7_imag : integer := 0;
+
+
+constant w0Real : std_logic_vector(15 downto 0) := std_logic_vector(to_signed(w0_real,16));
+constant w1Real : std_logic_vector(15 downto 0) := std_logic_vector(to_signed(w1_real,16));
+constant w2Real : std_logic_vector(15 downto 0) := std_logic_vector(to_signed(w2_real,16));
+constant w3Real : std_logic_vector(15 downto 0) := std_logic_vector(to_signed(w3_real,16));
+constant w4Real : std_logic_vector(15 downto 0) := std_logic_vector(to_signed(w4_real,16));
+constant w5Real : std_logic_vector(15 downto 0) := std_logic_vector(to_signed(w5_real,16));
+constant w6Real : std_logic_vector(15 downto 0) := std_logic_vector(to_signed(w6_real,16));
+constant w7Real : std_logic_vector(15 downto 0) := std_logic_vector(to_signed(w7_real,16));
+ 
+constant w0Imag : std_logic_vector(15 downto 0) := std_logic_vector(to_signed(w0_imag,16));
+constant w1Imag : std_logic_vector(15 downto 0) := std_logic_vector(to_signed(w1_imag,16));
+constant w2Imag : std_logic_vector(15 downto 0) := std_logic_vector(to_signed(w2_imag,16));
+constant w3Imag : std_logic_vector(15 downto 0) := std_logic_vector(to_signed(w3_imag,16));
+constant w4Imag : std_logic_vector(15 downto 0) := std_logic_vector(to_signed(w4_imag,16));
+constant w5Imag : std_logic_vector(15 downto 0) := std_logic_vector(to_signed(w5_imag,16));
+constant w6Imag : std_logic_vector(15 downto 0) := std_logic_vector(to_signed(w6_imag,16));
+constant w7Imag : std_logic_vector(15 downto 0) := std_logic_vector(to_signed(w7_imag,16));
 
 begin
 

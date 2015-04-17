@@ -44,7 +44,8 @@ architecture Behavioral of MotherFile is
 
 component mux_4_1 is
 
-port(	sel: in std_logic_vector(1 downto 0);
+port(	clk: in std_logic;
+		sel: in std_logic_vector(1 downto 0);
 		inputReal: in array_16point;
 		inputImag: in array_16point;
 		outputReal: out array_16point;
@@ -60,11 +61,12 @@ signal sel: std_logic_vector(1 downto 0) := "00";
 
 begin
 
-mux_module: component mux_4_1 port map(sel, s1Real, s1Imag, s2Real, s2Imag);
+
 
 process(clk, sel)
 
 variable I : integer range 0 to 3 := 0;
+variable prev : std_logic_vector(1 downto 0) := "00";
 
 begin
 
@@ -75,15 +77,25 @@ if(rising_edge(clk))then
 	s1Real <= s2Real;
 	s1Imag <= s2Imag;
 	
-	if(sel = "11")then
-		sel <= "00";
+	if(prev = "00")then
+		sel <= "01";
+		prev := "01";
+	elsif (prev = "01")then
+		sel <= "10";
+		prev := "10";
+	elsif (prev = "10")then
+		sel <= "11";
+		prev := "11";
 	else
-		sel <= UNSIGNED(sel) + 1;
+		sel <= "00";
+		prev := "00";
 	end if;
-	
+
 end if;
 
 end process;
+
+mux_module: component mux_4_1 port map(clk, sel, s1Real, s1Imag, s2Real, s2Imag);
 
 --Stage_2: component mux_4_1 port map("01", s2Real, 	s2Imag, s3Real, s3Imag);
 --Stage_3: component mux_4_1 port map("10", s3Real, 	s3Imag, s4Real, s4Imag);

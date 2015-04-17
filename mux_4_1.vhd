@@ -32,7 +32,8 @@ use work.array_16point.all;
 
 entity mux_4_1 is
 
-port(	sel: in std_logic_vector(1 downto 0);
+port(	clk: in std_logic;
+		sel: in std_logic_vector(1 downto 0);
 		inputReal: in array_16point;
 		inputImag: in array_16point;
 		outputReal: out array_16point;
@@ -55,13 +56,13 @@ signal tempReal, tempImag: array_16point;
 
 begin
 
-process(sel, inputReal, inputImag)
+process(clk, sel, inputReal, inputImag)
 
 begin
 
-case sel is
+if(rising_edge(clk))then
 
-	when "00" =>
+if sel = "00" then
 			
 		tempReal(0) 	<=		inputReal(0);
 		tempReal(1)		<=		inputReal(8);
@@ -97,7 +98,7 @@ case sel is
 		tempImag(14)	<=		inputImag(7);
 		tempImag(15)	<=		inputImag(15);		
 		
-	when "01" =>
+elsif sel = "01" then
 
 		tempReal(0) 	<=		inputReal(0);
 		tempReal(1)		<=		inputReal(2);
@@ -134,7 +135,7 @@ case sel is
 		tempImag(15)	<=		inputImag(15);	
 		
 	
-	when "10" =>
+elsif sel = "10" then
 	
 		tempReal(0) 	<=		inputReal(0);
 		tempReal(1)		<=		inputReal(4);
@@ -171,7 +172,7 @@ case sel is
 		tempImag(15)	<=		inputImag(15);
 		
 	
-	when "11" =>
+elsif sel = "11" then
 	
 		tempReal(0) 	<=		inputReal(0);
 		tempReal(1)		<=		inputReal(8);
@@ -190,11 +191,8 @@ case sel is
 		tempReal(14)	<=		inputReal(7);
 		tempReal(15)	<=		inputReal(15);
 		
-	when others =>
-	
-		null;
-	
-end case;
+end if;
+end if;
 
 end process;
 
