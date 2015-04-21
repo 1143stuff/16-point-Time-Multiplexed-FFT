@@ -1,60 +1,41 @@
-----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
--- 
--- Create Date:    17:30:24 04/04/2015 
--- Design Name: 
--- Module Name:    butterfly - Behavioral 
--- Project Name: 
--- Target Devices: 
--- Tool versions: 
--- Description: 
---
--- Dependencies: 
---
--- Revision: 
--- Revision 0.01 - File Created
--- Additional Comments: 
---
-----------------------------------------------------------------------------------
-library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
-use IEEE.STD_LOGIC_signed.ALL;
-use work.array_16point.all;
-
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
-
--- Uncomment the following library declaration if instantiating
--- any Xilinx primitives in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_signed.all;
+use ieee.numeric_std.all;
+library WORK;
+use WORK.complex.ALL; 
 
 entity butterfly is
-
-port(	aReal, bReal, wReal : in std_logic_vector(15 downto 0);
-		aImag, bImag, wImag : in std_logic_vector(15 downto 0);
-		c1Real, c2Real: out std_logic_vector(15 downto 0);
-		c1Imag, c2Imag: out std_logic_vector(15 downto 0));
-
+port(A, B, W : in complex_in;
+	  C1, C2: out complex_in);
 end butterfly;
 
 architecture Behavioral of butterfly is
 
-signal p1, p2, p3, p4, s1, s2 : std_logic_vector(31 downto 0);
+signal p1, p2, p3, p4, s1, s2: signed(15 downto 0);
+
+signal t1, t2, t3, t4: signed(31 downto 0);
+
+signal C: complex_in;
 
 begin  
 
-p1 <= bReal*wReal;  
-p2 <= bImag*wImag; 
-p3 <= bReal*wImag;
-p4 <= bImag*wReal; 
+t1 <= (B.re*W.re) srl 8;  
+t2 <= (B.im*W.im) srl 8; 
+t3 <= (B.re*W.im) srl 8;
+t4 <= (B.im*W.re) srl 8;
+
+p1<=t1(15 downto 0);
+p2<=t2(15 downto 0);
+p3<=t3(15 downto 0);
+p4<=t4(15 downto 0);
+
 s1 <= (p1-p2);
 s2 <= (p3+p4);
-c1Real <=  aReal + s1(15 downto 0);    
-c1Imag <=  aImag + s2(15 downto 0);
-c2Real <=  aReal - s1(15 downto 0);   
-c2Imag <=  aImag - s2(15 downto 0);
+
+C1.re <=  A.re +s1;    
+C1.im <=  A.im +s2;
+C2.re <=  A.re -s1;   
+C2.im <=  A.im -s2;
 
 end Behavioral;
